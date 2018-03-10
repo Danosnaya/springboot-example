@@ -1,29 +1,40 @@
 package com.asm.springexample.controller;
 
-import com.asm.springexample.model.Greeting;
+import com.asm.springexample.model.Customer;
+import com.asm.springexample.service.ExampleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by LecAnibal on 10/25/17.
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/customers")
 public class HelloWorldController {
+
+    @Autowired
+    ExampleService exampleService;
+
+
 
     private static final String template = "Hi!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping(method= RequestMethod.GET)
+    @RequestMapping(value= "/{customer}/detail",method= RequestMethod.GET)
     public @ResponseBody
-    Greeting sayHello(@RequestParam(value="name", required=false, defaultValue="deafult") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template), name);
+    Customer sayHello(@PathVariable("customer") String customerId,
+                      @RequestParam(value="name", required=false, defaultValue="deafult") String name) {
+        return exampleService.getSomeData (customerId,name);
+    }
+
+    @RequestMapping(value= "/list",method= RequestMethod.GET)
+    public @ResponseBody
+    List<Customer> getList() {
+        return exampleService.getListdata();
     }
 
 }
-

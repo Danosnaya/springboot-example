@@ -2,11 +2,12 @@ package com.asm.springexample.config;
 
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 /**
  * Created by LecAnibal on 10/25/17.
  */
-@Component
+@Configuration
 public class CustomContainer implements EmbeddedServletContainerCustomizer {
 
 

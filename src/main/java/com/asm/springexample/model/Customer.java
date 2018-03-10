@@ -3,18 +3,18 @@ package com.asm.springexample.model;
 /**
  * Created by LecAnibal on 10/25/17.
  */
-public class Greeting {
+public class Customer {
 
-    private final long id;
+    private final String id;
     private final String content;
     private final String name;
-    public Greeting(long id, String content, String name) {
+    public Customer(String id, String content, String name) {
         this.id = id;
         this.content = content;
         this.name = name;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
