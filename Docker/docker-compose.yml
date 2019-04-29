@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build:
+      ./example
+    container_name: "java-app"
+    depends_on:
+      - db
+    ports:
+      - "9091:9091"
+    networks:
+      - examplenetwork
+
+  db:
+    image: postgres
+    container_name: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: postgres
+    volumes:
+      - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
+    networks:
+      - examplenetwork
+
+networks:
+  examplenetwork:
