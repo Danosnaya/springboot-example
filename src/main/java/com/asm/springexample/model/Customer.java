@@ -5,12 +5,16 @@ package com.asm.springexample.model;
  */
 public class Customer {
 
-    private final String id;
-    private final String content;
-    private final String name;
-    public Customer(String id, String content, String name) {
+    private  String id;
+    private int age ;
+    private  String name;
+
+    public Customer() {
+    }
+
+    public Customer(String id, int age, String name) {
         this.id = id;
-        this.content = content;
+        this.age = age;
         this.name = name;
     }
 
@@ -18,11 +22,20 @@ public class Customer {
         return id;
     }
 
-    public String getContent() {
-        return content;
+    public int getAge() {
+        return age;
     }
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

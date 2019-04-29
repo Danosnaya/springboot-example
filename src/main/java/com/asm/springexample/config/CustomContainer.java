@@ -13,6 +13,6 @@ public class CustomContainer implements EmbeddedServletContainerCustomizer {
 
     @java.lang.Override
     public void customize(ConfigurableEmbeddedServletContainer configurableEmbeddedServletContainer) {
-        configurableEmbeddedServletContainer.setPort(9192);
+        configurableEmbeddedServletContainer.setPort(9091);
     }
 }
