@@ -14,16 +14,16 @@ public class CustomerService {
     CustomerRepository customerRepository;
 
 
-    public Customer getCustomerById(String customerId ){
-        return customerRepository.getCustomerById( customerId);
+    public Customer getCustomerById(String customerId) {
+        return customerRepository.getCustomerById(customerId);
     }
 
-    public List<Customer> getCustomerList(){
+    public List<Customer> getCustomerList() {
         return customerRepository.getCustomerList();
     }
 
-    public String addCustomer(Customer customer){
-       return customerRepository.addCustomer(customer);
+    public String addCustomer(Customer customer) {
+        return customerRepository.addCustomer(customer);
     }
 
 }

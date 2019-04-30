@@ -40,7 +40,9 @@ public class CustomerRepository {
     }
 
     public List<Customer> getCustomerList() {
-        return jdbcTemplate.queryForList(SELECT_ALL_CUSTOMERS).stream().map(map -> new Customer((String) map.get("id"), ((BigDecimal) map.get("age")).intValue(), (String) map.get("name"))).collect(Collectors.toList());
+        return jdbcTemplate.queryForList(SELECT_ALL_CUSTOMERS).stream()
+                .map(map -> new Customer((String) map.get("id"), ((BigDecimal) map.get("age")).intValue(), (String) map.get("name")))
+                .collect(Collectors.toList());
     }
 
     public String addCustomer(Customer c) {
