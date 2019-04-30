@@ -19,8 +19,6 @@ services:
     environment:
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: postgres
-    volumes:
-      - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
     networks:
       - examplenetwork
 

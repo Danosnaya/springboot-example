@@ -1,3 +1,4 @@
 target/
 unifiedPortal.iml
 .idea/
+./**/*.jar

@@ -17,19 +17,21 @@ public class CustomerRepository {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
-        String SELECT_CUSTOMER_BY_ID = "select id ,age , name from customer where id = 'X'";
 
-        String SELECT_ALL_CUSTOMERS = "select id ,age , name from customer";
 
-        String INSERT_CUSTOMER = "INSERT INTO public.customer(id, age, name) VALUES ('XX', YY, 'ZZ')";
+    String SELECT_CUSTOMER_BY_ID = "select id ,age , name from customer where id = 'X'";
+
+    String SELECT_ALL_CUSTOMERS = "select id ,age , name from customer";
+
+    String INSERT_CUSTOMER = "INSERT INTO public.customer(id, age, name) VALUES ('XX', YY, 'ZZ')";
 
     public Customer getCustomerById(String id) {
 
         Customer customer = null;
         try {
-            String query = SELECT_CUSTOMER_BY_ID.replace("X", id) ;
-            Map map  = jdbcTemplate.queryForMap(query);
-            customer = new Customer((String )map.get("id"),((BigDecimal) map.get("age")).intValue(),(String)map.get("name"));
+            String query = SELECT_CUSTOMER_BY_ID.replace("X", id);
+            Map map = jdbcTemplate.queryForMap(query);
+            customer = new Customer((String) map.get("id"), ((BigDecimal) map.get("age")).intValue(), (String) map.get("name"));
         } catch (Exception e) {
             System.out.print(" error " + e.getMessage());
         }
@@ -38,7 +40,7 @@ public class CustomerRepository {
     }
 
     public List<Customer> getCustomerList() {
-        return jdbcTemplate.queryForList(SELECT_ALL_CUSTOMERS).stream().map(map-> new Customer((String )map.get("id"),((BigDecimal) map.get("age")).intValue(),(String)map.get("name"))).collect(Collectors.toList());
+        return jdbcTemplate.queryForList(SELECT_ALL_CUSTOMERS).stream().map(map -> new Customer((String) map.get("id"), ((BigDecimal) map.get("age")).intValue(), (String) map.get("name"))).collect(Collectors.toList());
     }
 
     public String addCustomer(Customer c) {
