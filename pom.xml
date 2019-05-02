@@ -42,6 +42,7 @@
             <version>42.1.1</version>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -49,6 +50,27 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>4.0.3</version>
+                <configuration>
+                    <configFile>${project.build.directory}/classes/application.properties</configFile>
+                    <locations>
+                        <location>classpath:db/migration</location>
+                    </locations>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>Flyway migrate</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                            <goal>validate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

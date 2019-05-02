@@ -3,7 +3,6 @@ services:
   app:
     build:
       ./example
-    container_name: "java-app"
     depends_on:
       - db
     ports:
